@@ -210,7 +210,10 @@ class VideoSource(AFileManager):
 
     def hardSave(self):
         if (os.path.isfile(self.getJSONPath())):
-            os.rename(self.getJSONPath(), self.getDir('backup') + os.sep + self.AOBJECT_TYPE() + ".json");
+            try:
+                os.rename(self.getJSONPath(), self.getDir('backup') + os.sep + self.AOBJECT_TYPE() + ".json");
+            except:
+                pass
         self.writeToJSON(self.getJSONPath());
 
     def save(self):
